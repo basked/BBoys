@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         private var rating: Int,
         private var nickname: String,
         private var country: String,
-        private var img: Int
+        private var img: Int? =null
     ) {
         fun getRating(): Int {
             return rating
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             return nickname
         }
 
-        fun getImg(): Int {
+        fun getImg(): Int? {
             return img
         }
     }
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             val country = view.findViewById<TextView>(R.id.textCountry)
 
             // BIND data to TextView and ImageView
-            img.setImageResource(bboy.getImg())
+            bboy.getImg()?.let { img.setImageResource(it) }
             rating.text = bboy.getRating().toString()
             nickname.text = bboy.getNickname()
             country.text = bboy.getCountry()
@@ -86,9 +86,9 @@ class MainActivity : AppCompatActivity() {
     private val data: ArrayList<BBoy>
         get() {
             val bboys = ArrayList<BBoy>()
-            var bboy = BBoy(1, "Lilou", "France", R.drawable.lilou)
+            var bboy = BBoy(1, "Lilou", "France", null)
             bboys.add(bboy)
-            bboy = BBoy(2, "Menno", "Netherland", R.drawable.menno)
+           /*bboy = BBoy(2, "Menno", "Netherland", R.drawable.menno)
             bboys.add(bboy)
             bboy = BBoy(3, "Hong 10", "Shouth Korea", R.drawable.hong_10)
             bboys.add(bboy)
@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             bboy = BBoy(9, "Sunni", "British", R.drawable.sunni)
             bboys.add(bboy)
             bboy = BBoy(10, "Roxrite", "USA", R.drawable.roxrite)
-            bboys.add(bboy)
+            bboys.add(bboy)*/
             return bboys
         }
 
